@@ -1,0 +1,39 @@
+image: eclipse-temurin:17.0.7_7-jdk
+
+definitions:
+  steps:
+    - step: &test
+        name: Test
+        caches:
+          - gradle
+        script:
+          - ./gradlew test
+    - step: &build
+        name: Build
+        caches:
+          - gradle
+        script:
+          - ./gradlew shadowJar
+          - mv ./build/libs/identity-service-0.1-all.jar app.jar
+          - tar -czvf app.tar.gz ./app.jar
+        artifacts:
+          - app.tar.gz
+    - step: &upload
+        name: Upload
+        script:
+          - pipe: atlassian/bitbucket-upload-file:0.3.4
+            variables:
+              BITBUCKET_USERNAME: $BITBUCKET_USERNAME
+              BITBUCKET_APP_PASSWORD: $BITBUCKET_APP_PASSWORD
+              FILENAME: '$BITBUCKET_CLONE_DIR/app.tar.gz'
+
+pipelines:
+
+  default:
+    - step: *test
+
+  branches:
+    main:
+      - step: *test
+      - step: *build
+      - step: *upload
