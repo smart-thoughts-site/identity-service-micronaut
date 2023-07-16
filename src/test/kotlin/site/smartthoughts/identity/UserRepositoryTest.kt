@@ -7,10 +7,10 @@ import io.micronaut.data.annotation.Query
 import io.micronaut.test.extensions.kotest5.annotation.MicronautTest
 import site.smartthoughts.identity.infrastructure.persistence.UserRepository
 
-// @MicronautTest
+@MicronautTest
 class UserRepositoryTest(private val beanContext: BeanContext) : AnnotationSpec() {
 
-    // @Test
+    @Test
     fun testAnnotationMetadata() {
         val query = beanContext.getBeanDefinition(UserRepository::class.java)
             .getRequiredMethod<Any>("findByUsername", String::class.java)

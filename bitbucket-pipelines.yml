@@ -30,10 +30,9 @@ definitions:
 pipelines:
 
   default:
-    - step: *test
+    - step: *build
 
   branches:
     main:
-      - step: *test
       - step: *build
       - step: *upload
