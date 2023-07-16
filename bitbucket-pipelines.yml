@@ -21,7 +21,7 @@ definitions:
     - step: &upload
         name: Upload
         script:
-          - pipe: atlassian/bitbucket-upload-file:0.3.4
+          - pipe: atlassian/bitbucket-upload-file:0.4.0
             variables:
               BITBUCKET_USERNAME: $BITBUCKET_USERNAME
               BITBUCKET_APP_PASSWORD: $BITBUCKET_APP_PASSWORD

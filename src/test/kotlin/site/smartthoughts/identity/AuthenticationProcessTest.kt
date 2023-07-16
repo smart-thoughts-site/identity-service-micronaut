@@ -4,6 +4,7 @@ import com.nimbusds.jwt.JWTParser
 import com.nimbusds.jwt.SignedJWT
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.assertions.withClue
+import io.kotest.core.annotation.Tags
 import io.kotest.core.spec.style.AnnotationSpec
 import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
@@ -30,6 +31,7 @@ import site.smartthoughts.identity.application.ApplicationUsers
 import java.util.*
 
 @MicronautTest
+@Tags("unit")
 class AuthenticationProcessTest(
     private val applicationUsers: ApplicationUsers,
     @Client("/") val httpClient: HttpClient
