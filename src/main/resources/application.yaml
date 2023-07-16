@@ -1,0 +1,29 @@
+micronaut:
+  application:
+    name: identityService
+  security:
+    authentication: bearer
+    token:
+      jwt:
+        generator:
+          refresh-token:
+            secret: ${JWT_GENERATOR_SIGNATURE_SECRET:pleaseChangeThisSecretForANewOne}
+        signatures:
+          secret:
+            generator:
+              secret: ${JWT_GENERATOR_SIGNATURE_SECRET:pleaseChangeThisSecretForANewOne}
+
+datasources:
+  default:
+    url: jdbc:postgresql://db-postgresql-fra1-76847-do-user-13984528-0.b.db.ondigitalocean.com:25060/defaultdb
+    username: doadmin
+    password: AVNS_j49aYxg50wODddUfvGJ
+    driver-class-name: org.postgresql.Driver
+
+jpa:
+  default:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: validate
+        show_sql: true
