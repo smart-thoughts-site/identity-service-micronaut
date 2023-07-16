@@ -1,9 +1,11 @@
 plugins {
     id("org.jetbrains.kotlin.jvm") version "1.9.0"
     id("org.jetbrains.kotlin.plugin.allopen") version "1.9.0"
+    id("org.jetbrains.kotlin.plugin.jpa") version "1.9.0"
     id("com.google.devtools.ksp") version "1.9.0-1.0.11"
     id("com.github.johnrengelman.shadow") version "8.1.1"
     id("io.micronaut.application") version "4.0.0"
+    id("io.micronaut.aot") version "4.0.0"
 }
 
 version = "0.1"
@@ -17,17 +19,17 @@ repositories {
 dependencies {
     ksp("io.micronaut:micronaut-inject-java")
     ksp("io.micronaut.data:micronaut-data-processor")
-    ksp("io.micronaut.data:micronaut-data-hibernate-jpa")
+    // ksp("io.micronaut.data:micronaut-data-hibernate-jpa")
     ksp("io.micronaut.security:micronaut-security-annotations")
     ksp("io.micronaut.serde:micronaut-serde-processor")
 
-    implementation("io.micronaut.data:micronaut-data-jpa")
+    implementation("io.micronaut.data:micronaut-data-hibernate-jpa")
     implementation("io.micronaut.kotlin:micronaut-kotlin-runtime")
     implementation("io.micronaut.reactor:micronaut-reactor")
     implementation("io.micronaut.security:micronaut-security-jwt")
     implementation("io.micronaut.serde:micronaut-serde-jackson")
 
-    implementation("io.micronaut.sql:micronaut-hibernate-jpa")
+    // implementation("io.micronaut.sql:micronaut-hibernate-jpa")
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
     implementation("jakarta.persistence:jakarta.persistence-api")
 
