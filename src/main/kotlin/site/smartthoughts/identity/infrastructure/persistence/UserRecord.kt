@@ -19,7 +19,7 @@ class UserRecord (
     var email: String,
     @NotNull
     @Column(name="salt", columnDefinition = "bpchar(88)", nullable = false, length = 88)
-    var salt: ByteArray,
+    var salt: String,
     @NotNull
     @Column(name="password", columnDefinition = "bpchar(88)", nullable = false, length = 88)
     var password: String

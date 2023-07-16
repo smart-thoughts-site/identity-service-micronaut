@@ -6,5 +6,5 @@ class ApplicationUser(
     val id: UUID,
     val username: String,
     val email: String,
-    val saltHash: ByteArray,
+    val saltHash: String,
     val passwordHash: String)
