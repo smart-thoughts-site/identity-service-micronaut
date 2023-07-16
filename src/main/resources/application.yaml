@@ -22,6 +22,8 @@ datasources:
 
 jpa:
   default:
+    entity-scan:
+      packages: site.smartthoughts.identity.infrastructure.persistence
     properties:
       hibernate:
         hbm2ddl:
