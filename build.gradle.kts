@@ -16,6 +16,7 @@ repositories {
 
 dependencies {
     ksp("io.micronaut.data:micronaut-data-processor")
+    ksp("io.micronaut.data:micronaut-data-hibernate-jpa")
     ksp("io.micronaut.security:micronaut-security-annotations")
     ksp("io.micronaut.serde:micronaut-serde-processor")
 
