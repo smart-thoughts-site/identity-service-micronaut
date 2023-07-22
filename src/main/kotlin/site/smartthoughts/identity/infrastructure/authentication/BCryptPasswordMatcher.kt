@@ -15,15 +15,11 @@ internal class BCryptPasswordMatcher : PasswordMatcher {
     }
 
     override fun matches(passwordHash: String, saltHash: String, providedPassword: String): Boolean {
-        println("passwordHash: $passwordHash, providedPassword: $providedPassword, saltHash: $saltHash")
-
         val saltHashAsBytes = Base64.getDecoder().decode(saltHash)
 
         val spec = PBEKeySpec(providedPassword.toCharArray(), saltHashAsBytes, iterations, 512)
         val providedPwHash = secretKeyFactory.generateSecret(spec).encoded
         val base64PwHash = Base64.getEncoder().encodeToString(providedPwHash)
-
-        println("provided hash: $base64PwHash, user pw hash: $passwordHash")
 
         return passwordHash.contentEquals(base64PwHash)
     }
