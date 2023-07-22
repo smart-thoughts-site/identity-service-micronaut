@@ -15,9 +15,9 @@ micronaut:
 
 datasources:
   default:
-    url: jdbc:postgresql://db-postgresql-fra1-76847-do-user-13984528-0.b.db.ondigitalocean.com:25060/defaultdb
-    username: doadmin
-    password: AVNS_j49aYxg50wODddUfvGJ
+    url: jdbc:postgresql://${PGHOST}:${PGPORT}/${PGDATABASE}
+    username: ${PGUSER}
+    password: ${PGPASSWORD}
     driver-class-name: org.postgresql.Driver
 
 jpa:
