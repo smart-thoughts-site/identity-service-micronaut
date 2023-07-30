@@ -10,7 +10,6 @@ internal class ApplicationUsersAdapter(private val userRepository: UserRepositor
     override fun findByName(username: String): ApplicationUser? {
         val result = userRepository.findByUsername(username) ?: return null
         return ApplicationUser(
-            result.id!!,
             result.username,
             result.email,
             result.salt,
