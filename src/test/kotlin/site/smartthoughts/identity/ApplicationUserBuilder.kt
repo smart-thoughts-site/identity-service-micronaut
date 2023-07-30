@@ -14,16 +14,16 @@ object ApplicationUserBuilder {
 
     fun create(username: String, password: String): ApplicationUser {
         var saltHash = random.generateSeed(512);
+        val base64SaltHash = Base64.getEncoder().encodeToString(saltHash)
 
         val spec = PBEKeySpec(password.toCharArray(), saltHash, iterations, 512)
         val passwordHash = secretKeyFactory.generateSecret(spec).encoded
         val base64PwHash = Base64.getEncoder().encodeToString(passwordHash)
 
         return ApplicationUser(
-            UUID.randomUUID(),
             username,
             "email",
-            saltHash,
+            base64SaltHash,
             base64PwHash
         )
     }

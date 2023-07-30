@@ -13,7 +13,6 @@ import java.util.*
 @Table(name = "users")
 class UserRecord (
     @Id
-    var id: UUID? = null,
     @NotNull
     var username: String,
     var email: String,
