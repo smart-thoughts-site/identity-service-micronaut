@@ -14,7 +14,6 @@ jobs:
         run: |
           ./gradlew shadowJar
           mv ./build/libs/identity-service-0.1-all.jar app.jar
-          tar -czvf app.tar.gz ./app.jar
 
       - name: Docker meta
         id: meta
